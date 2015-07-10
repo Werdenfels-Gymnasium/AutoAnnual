@@ -11,12 +11,12 @@ public class Teacher {
 	private final String firstname, lastname;
 	private final TreeMap<String, List<Subject>> subjects = new TreeMap<String, List<Subject>>();
 
-	public Teacher(String lastname, String firstname) {
+	public Teacher(final String lastname, final String firstname) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}
 	
-	public void addSubject(String classname, Subject subject) {
+	public void addSubject(final String classname, final Subject subject) {
 		ScribusUtil.putIfAbsent(this.subjects, classname, new ArrayList<Subject>());
 		this.subjects.get(classname).add(subject);
 	}

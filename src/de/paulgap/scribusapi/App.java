@@ -12,7 +12,7 @@ public class App {
 	 *  @category Scribus Java API Implementation
 	 */
 	
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 				
 		System.out.println("###### STARTING SCRIBUS API ######");
 		

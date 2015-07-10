@@ -14,11 +14,11 @@ public class ScribusUtil {
 	 *  @category Scribus Java API Implementation
 	 */
 	
-	public static TreeMap<String, String> stringToAttributes(String attributestring) {
-		TreeMap<String, String> tmpAttributes = new TreeMap<String, String>();
-		String[] splits = attributestring.split("[\"][ ]");
+	public static TreeMap<String, String> stringToAttributes(final String attributestring) {
+		final TreeMap<String, String> tmpAttributes = new TreeMap<String, String>();
+		final String[] splits = attributestring.split("[\"][ ]");
 		
-		for (String p : splits) {
+		for (final String p : splits) {
 			final String[] attributes = p.replaceAll("\"", "").split("=");
 			if (attributes.length == 2) {
 				tmpAttributes.put(attributes[0], attributes[1]);
@@ -28,19 +28,19 @@ public class ScribusUtil {
 		return tmpAttributes;
 	}
 	
-	public static void setAttributesFromMap(TreeMap<String, String> map, Element element) {
-		for (Entry<String, String> entry : map.entrySet()) {
+	public static void setAttributesFromMap(final TreeMap<String, String> map, final Element element) {
+		for (final Entry<String, String> entry : map.entrySet()) {
 			element.setAttribute(entry.getKey(), entry.getValue());
 		}
 	}
 	
-	public static Element createTextElement(String text, ScribusXML xml) {
-		Element tmp = xml.getRootDocument().createElement("ITEXT");
+	public static Element createTextElement(final String text, final ScribusXML xml) {
+		final Element tmp = xml.getRootDocument().createElement("ITEXT");
 		tmp.setAttribute("CH", text);
 		return tmp;
 	}
 	
-	public static <T, X> void putIfAbsent(Map<T, X> map, T key, X value) {
+	public static <T, X> void putIfAbsent(final Map<T, X> map, final T key, final X value) {
 		if (!map.containsKey(key)) map.put(key, value);
 	}
 }

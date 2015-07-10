@@ -13,21 +13,18 @@ import de.paulgap.classphoto.Util;
 public class StudentLoader {
 
 	private final List<Student> students = new ArrayList<Student>();
+	final File studentlist = new File("Klassen/schueler/schuelerliste.csv");
 	
 	public StudentLoader(Bootstrap booter) {
 		
-		final File f = new File("Klassen/schueler/schuelerliste.csv");
-		
 		
 		try {
-			final Scanner s = new Scanner(f);
+			final Scanner scanner = new Scanner(studentlist);
 			int i = 0;
 
-			while (s.hasNextLine()) {
-				String[] args = s.nextLine().split(";");
-			
-				// REMOVE 'S' for Custom 9a
-				SchoolClass sclass = booter.getSchoolClass(Util.formatClassName(args[2]).replaceAll("s", ""));
+			while (scanner.hasNextLine()) {
+				final String[] args = scanner.nextLine().split(";");
+				final SchoolClass sclass = booter.getSchoolClass(Util.formatClassName(args[2]).replaceAll("s", ""));
 				
 				if (sclass != null) {
 					i++;
@@ -37,12 +34,12 @@ public class StudentLoader {
 			
 			System.out.println("###### SUCCESFULLY READ " + i + " STUDENTS ######");
 			
-			s.close();
-		} catch (Exception e) {
+			scanner.close();
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 		
-		for (Student std : students) {
+		for (final Student std : students) {
 			std.getSchoolClass().addStudent(std);
 		}
 	}

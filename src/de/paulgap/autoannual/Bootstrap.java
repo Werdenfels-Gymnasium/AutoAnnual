@@ -13,12 +13,12 @@ import de.paulgap.classphoto.input.OrderComparator;
 import de.paulgap.classphoto.input.StudentLoader;
 import de.paulgap.scribusapi.ScribusXML;
 
-public class Bootstrap {
+public final class Bootstrap {
 
 	private final ScribusXML xml;
 	private final TreeMap<String, SchoolClass> classes = new TreeMap<String, SchoolClass>();
 	
-	public Bootstrap(ScribusXML xml) {
+	public Bootstrap(final ScribusXML xml) {
 		this.xml = xml;
 	}
 
@@ -26,24 +26,20 @@ public class Bootstrap {
 		
 		final OrderComparator order = new OrderComparator();
 		
-		for (String cur : order.getClasses()) {
+		for (final String cur : order.getClasses()) {
 			final SchoolClass sclass = new SchoolClass(cur);
 			
 			final File kteam = new File("Klassen/lehrer/Klassenteam_" + sclass.getClassName() + ".csv");
 					
 			try {
 				Scanner kscanner = new Scanner(new FileInputStream(kteam), "windows-1252");
-		
-				//kscanner.nextLine();
-				
+						
 				while (kscanner.hasNextLine()) {
 					ClassTeamValidator.handleClassTeamLine(kscanner.nextLine(), sclass);
 				}
 				
-				kscanner.reset();
 				kscanner.close();
-				kscanner = null;
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				e.printStackTrace();
 			}
 				
@@ -52,11 +48,10 @@ public class Bootstrap {
 			classes.put(cur, sclass);
 		}
 		
-		
 		new StudentLoader(this);
 		
 		int page = 1;
-		for (SchoolClass sclass : classes.values()) {
+		for (final SchoolClass sclass : classes.values()) {
 			Util.createPages(xml, page);
 			xml.appendObject(new ScribusClassPhotoPage(xml, sclass, page));
 			page++;
@@ -65,7 +60,7 @@ public class Bootstrap {
 		xml.setPages(classes.size());
 	}
 	
-	public SchoolClass getSchoolClass(String classname) {
+	public SchoolClass getSchoolClass(final String classname) {
 		return classes.get(classname);
 	}
 }

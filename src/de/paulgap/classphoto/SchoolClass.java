@@ -12,20 +12,19 @@ public class SchoolClass {
 	private final List<Teacher> leaders = new ArrayList<Teacher>();
 	private final List<Subject> subjects = new ArrayList<Subject>();
 	
-	public SchoolClass(String classname) {
+	public SchoolClass(final String classname) {
 		this.classname = classname;
 	}
 	
-	
-	public void addLeader(Teacher leader) {
+	public void addLeader(final Teacher leader) {
 		this.leaders.add(leader);
 	}
 	
-	public void addStudent(Student student) {
+	public void addStudent(final Student student) {
 		this.students.add(student);
 	}
 
-	public void addSubject(Subject subject) {
+	public void addSubject(final Subject subject) {
 		this.subjects.add(subject);
 	}
 
@@ -45,7 +44,7 @@ public class SchoolClass {
 		return classphotofile;
 	}
 
-	public void setClassPhoto(File classphotofile) {
+	public void setClassPhoto(final File classphotofile) {
 		if (!classphotofile.exists()) throw new IllegalStateException("Classphoto of " + getClassName() + " in " + classphotofile.getAbsolutePath() + " not found."); 
 		this.classphotofile = classphotofile;
 	}

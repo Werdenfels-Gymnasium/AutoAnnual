@@ -19,16 +19,16 @@ public class ScribusTextField extends ScribusAttributeObject implements ScribusO
 	private final ScribusXML xml;
 	private final HashMap<String, String> textattributes = new HashMap<String, String>();
 	
-	public ScribusTextField(ScribusXML xml) {
+	public ScribusTextField(final ScribusXML xml) {
 		this.xml = xml;
 	}
 	
-	public void setTextAttribute(String key, String value) {
+	public void setTextAttribute(final String key, final String value) {
 		textattributes.put(key, value);
 	}
 
 	
-	public void setTextAttributes(Map<String, String> attributes) {
+	public void setTextAttributes(final Map<String, String> attributes) {
 		textattributes.clear();
 		textattributes.putAll(attributes);
 	}
@@ -36,15 +36,15 @@ public class ScribusTextField extends ScribusAttributeObject implements ScribusO
 
 	public List<Element> toDOMNode() {
 		
-		Element pageobject = xml.getRootDocument().createElement("PAGEOBJECT");
+		final Element pageobject = xml.getRootDocument().createElement("PAGEOBJECT");
 		
-		for (Entry<String, String> entry : rootattributes.entrySet()) {
+		for (final Entry<String, String> entry : rootattributes.entrySet()) {
 			pageobject.setAttribute(entry.getKey(), entry.getValue());
 		}
 		
-		Element textobject = xml.getRootDocument().createElement("ITEXT");
+		final Element textobject = xml.getRootDocument().createElement("ITEXT");
 		
-		for (Entry<String, String> entry : textattributes.entrySet()) {
+		for (final Entry<String, String> entry : textattributes.entrySet()) {
 			textobject.setAttribute(entry.getKey(), entry.getValue());
 		}		
 		

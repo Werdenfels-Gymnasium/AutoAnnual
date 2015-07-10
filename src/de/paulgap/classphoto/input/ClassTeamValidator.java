@@ -5,26 +5,22 @@ import de.paulgap.classphoto.Subject;
 import de.paulgap.classphoto.Teacher;
 import de.paulgap.classphoto.Subject.SubjectType;
 
-public class ClassTeamValidator {
+public final class ClassTeamValidator {
 
-	public static void handleClassTeamLine(String line, SchoolClass sclass) {
-		String[] args = line.split(";");
+	public static void handleClassTeamLine(final String line, final SchoolClass sclass) {
+		final String[] args = line.split(";");
 		if (args.length == 0) return;
 		
 		switch (args[0]) {
 			case "Klassenleitung":
-				
-				for (int i = 1; i < args.length; i++) {
+				for (int i = 1, x = args.length; i < x; i++) {
 					final String[] nsplit = args[i].split(",");
 					sclass.addLeader(new Teacher(nsplit[0], nsplit[1]));
 				}
-				
-				break;
-				
+				break;	
 			case "Evang. Religionslehre": 
 				handleArgs(args, sclass, SubjectType.EVANGELISCH);
 				break;
-				
 			case "Kath. Religionslehre": 
 				handleArgs(args, sclass, SubjectType.KATHOLISCH);
 				break;
@@ -79,10 +75,10 @@ public class ClassTeamValidator {
 		}
 	}
 	
-	private static void handleArgs(String[] args, SchoolClass sclass, SubjectType subj) {
-		for (int i = 1; i < args.length; i++) {
+	private static void handleArgs(final String[] args, final SchoolClass sclass, final SubjectType subj) {
+		for (int i = 1, x = args.length; i < x; i++) {
 			final String[] nsplit = args[i].split(",");
-			sclass.addSubject(new Subject((i == 1 ? subj : SubjectType.APPEND), (new Teacher(nsplit[0], nsplit[1]))));
+			sclass.addSubject(new Subject(i == 1 ? subj : SubjectType.APPEND, new Teacher(nsplit[0], nsplit[1])));
 		}
 	}
 }

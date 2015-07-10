@@ -8,23 +8,20 @@ import java.util.List;
 
 public class OrderComparator {
 	
-	private List<String> classes = new ArrayList<String>();
+	private final List<String> classes = new ArrayList<String>();
+	private final File classfile = new File("/Klassen/klassen");
 
 	public OrderComparator() {
 		
-				
-		final File f = new File("Klassen/klassen");
-		
-		for (final String file : f.list()) {
+		for (final String file : classfile.list()) {
 			classes.add(file.replaceAll(".JPG", ""));
 		}
 		
-		Comparator<String> sorter = new Comparator<String>() {
+		final Comparator<String> sorter = new Comparator<String>() {
 
-			public int compare(String o1, String o2) {
-				
-				int comint1 = Integer.parseInt(o1.replaceAll("[a-zA-Z ]+", "")), comint2 = Integer.parseInt(o2.replaceAll("[a-zA-Z ]+", ""));
-				char comend1 = o1.replaceAll("[0-9]+", "").charAt(0), comend2 = o2.replaceAll("[0-9]+", "").charAt(0);
+			public int compare(final String str1, final String str2) {
+				final int comint1 = Integer.parseInt(str1.replaceAll("[a-zA-Z ]+", "")), comint2 = Integer.parseInt(str2.replaceAll("[a-zA-Z ]+", ""));
+				final char comend1 = str1.replaceAll("[0-9]+", "").charAt(0), comend2 = str2.replaceAll("[0-9]+", "").charAt(0);
 				
 				if (comint1 == comint2) {
 					if (Character.getNumericValue(comend1) < Character.getNumericValue(comend2)) {

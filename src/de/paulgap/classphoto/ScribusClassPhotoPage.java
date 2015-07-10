@@ -16,7 +16,7 @@ public class ScribusClassPhotoPage extends ScribusAttributeObject implements Scr
 	private final int page;
 	private final SchoolClass schoolclass;
 	
-	public ScribusClassPhotoPage(ScribusXML xml, SchoolClass schoolclass, int page) {
+	public ScribusClassPhotoPage(final ScribusXML xml, final SchoolClass schoolclass, final int page) {
 		this.xml = xml;
 		this.schoolclass = schoolclass;
 		this.page = page;
@@ -44,10 +44,10 @@ public class ScribusClassPhotoPage extends ScribusAttributeObject implements Scr
 	}
 
 	public List<Element> toDOMNode() {
-		Element studentnamesobject = xml.getRootDocument().createElement("PAGEOBJECT");
-		Element classphotoobject = xml.getRootDocument().createElement("PAGEOBJECT");
-		Element classnameobject = xml.getRootDocument().createElement("PAGEOBJECT");
-		Element teachernamesobject = xml.getRootDocument().createElement("PAGEOBJECT");
+		final Element studentnamesobject = xml.getRootDocument().createElement("PAGEOBJECT");
+		final Element classphotoobject = xml.getRootDocument().createElement("PAGEOBJECT");
+		final Element classnameobject = xml.getRootDocument().createElement("PAGEOBJECT");
+		final Element teachernamesobject = xml.getRootDocument().createElement("PAGEOBJECT");
 
 
 		/*********************************************
@@ -55,7 +55,7 @@ public class ScribusClassPhotoPage extends ScribusAttributeObject implements Scr
 		 *********************************************/		
 		ScribusUtil.setAttributesFromMap(getAttributes("studentnames"), studentnamesobject);
 		
-		for (Student student : schoolclass.getStudents()) {
+		for (final Student student : schoolclass.getStudents()) {
 			Util.appendText(studentnamesobject, xml, student.getLastname() + ", " + student.getFirstname());
 			Util.appendTab(studentnamesobject, xml);
 			Util.appendText(studentnamesobject, xml, student.getBirthday());
@@ -85,7 +85,7 @@ public class ScribusClassPhotoPage extends ScribusAttributeObject implements Scr
 		Util.appendText(teachernamesobject, xml, "Klassenleitung");
 		Util.appendPara(teachernamesobject, xml, "Klassen_Lehrer_fett");
 		
-		for (Teacher leader : schoolclass.getClassLeaders()) {
+		for (final Teacher leader : schoolclass.getClassLeaders()) {
 			Util.appendTab(teachernamesobject, xml);
 			Util.appendTab(teachernamesobject, xml);
 			Util.appendText(teachernamesobject, xml, leader.getLastname() + ", " + leader.getFirstname());
@@ -99,7 +99,7 @@ public class ScribusClassPhotoPage extends ScribusAttributeObject implements Scr
 		Util.appendText(teachernamesobject, xml, "Lehrer");
 		Util.appendPara(teachernamesobject, xml, "Klassen_Lehrer_fett");
 		
-		for (Subject subject : schoolclass.getSubjects()) {
+		for (final Subject subject : schoolclass.getSubjects()) {
 			Util.appendTab(teachernamesobject, xml);
 			Util.appendText(teachernamesobject, xml, subject.getType().toShortcut());
 			Util.appendTab(teachernamesobject, xml);

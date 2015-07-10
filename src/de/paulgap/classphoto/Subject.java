@@ -5,7 +5,7 @@ public class Subject {
 	private final SubjectType type;
 	private final Teacher teacher;
 	
-	public Subject(SubjectType type, Teacher teacher) {
+	public Subject(final SubjectType type, final Teacher teacher) {
 		this.type = type;
 		this.teacher = teacher;
 	}
@@ -44,7 +44,7 @@ public class Subject {
 		
 		private final String shortcut;
 
-		SubjectType(String shortcut) {
+		SubjectType(final String shortcut) {
 			this.shortcut = shortcut;
 		}
 		

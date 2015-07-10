@@ -20,20 +20,20 @@ public class ScribusXML {
 	 *  @category Scribus Java API Implementation
 	 */
 	
-	private File file;
+	private final File file;
 	private Document xmlDoc;
 	
 	// ELEMENTS
 	private Element scribusroot;
 	
-	public ScribusXML(File file) {
+	public ScribusXML(final File file) {
 		this.file = file;
 	}
 	
 	public boolean load() {
 		try {
 			this.xmlDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(this.file);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			System.err.println(e.getMessage());
 			return false;
 		}
@@ -58,24 +58,24 @@ public class ScribusXML {
 		if (xmlDoc.getDocumentElement().getElementsByTagName("DOCUMENT").getLength() == 0) throw new IllegalStateException("Error: Not a valid Scribus Layout File -> No Document Tag");
 	}
 	
-	public void appendObject(ScribusObject object) {
-		for (Element element : object.toDOMNode()) {
+	public void appendObject(final ScribusObject object) {
+		for (final Element element : object.toDOMNode()) {
 			scribusroot.appendChild(element);
 		}
 	}
 	
-	public void saveTo(File output) {
+	public void saveTo(final File output) {
 		try {
-			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			final Transformer transformer = TransformerFactory.newInstance().newTransformer();
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");			
 			transformer.transform(new DOMSource(xmlDoc), new StreamResult(output));
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void setPages(int page) {
+	public void setPages(final int page) {
 		scribusroot.setAttribute("ANZPAGES", String.valueOf(page));
 		((Element) ((Element) scribusroot.getElementsByTagName("Sections").item(0)).getElementsByTagName("Section").item(0)).setAttribute("To", String.valueOf(Integer.parseInt(String.valueOf(page)) * 2));
 	}
