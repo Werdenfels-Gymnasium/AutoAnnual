@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import de.paulgap.autoannual.Bootstrap;
+import de.paulgap.autoannual.FixedConfig;
 import de.paulgap.classphoto.SchoolClass;
 import de.paulgap.classphoto.Student;
 import de.paulgap.classphoto.Util;
@@ -13,7 +14,7 @@ import de.paulgap.classphoto.Util;
 public class StudentLoader {
 
 	private final List<Student> students = new ArrayList<Student>();
-	final File studentlist = new File("Klassen/schueler/schuelerliste.csv");
+	final File studentlist = new File(FixedConfig.ROOTDIR + "/schueler/schuelerliste.csv");
 	
 	public StudentLoader(Bootstrap booter) {
 		

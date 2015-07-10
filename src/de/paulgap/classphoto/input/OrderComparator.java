@@ -6,10 +6,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import de.paulgap.autoannual.FixedConfig;
+
 public class OrderComparator {
 	
 	private final List<String> classes = new ArrayList<String>();
-	private final File classfile = new File("/Klassen/klassen");
+	private final File classfile = new File(FixedConfig.ROOTDIR + "/klassen");
 
 	public OrderComparator() {
 		

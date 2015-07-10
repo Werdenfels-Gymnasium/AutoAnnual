@@ -18,6 +18,21 @@ public final class Bootstrap {
 	private final ScribusXML xml;
 	private final TreeMap<String, SchoolClass> classes = new TreeMap<String, SchoolClass>();
 	
+	public static void main(final String[] args) {
+		
+		System.out.println("###### STARTING SCRIBUS API ######");
+		
+		final ScribusXML sxml = new ScribusXML(FixedConfig.TEMPLATEPATH);
+		final Bootstrap boot = new Bootstrap(sxml);
+		
+		sxml.load();
+		boot.startup();
+		
+		sxml.saveTo(FixedConfig.OUTPUTPATH);
+		
+		System.out.println("###### XML SUCCESSFUL SAVED #######");
+	}
+	
 	public Bootstrap(final ScribusXML xml) {
 		this.xml = xml;
 	}
@@ -29,7 +44,7 @@ public final class Bootstrap {
 		for (final String cur : order.getClasses()) {
 			final SchoolClass sclass = new SchoolClass(cur);
 			
-			final File kteam = new File("Klassen/lehrer/Klassenteam_" + sclass.getClassName() + ".csv");
+			final File kteam = new File(FixedConfig.ROOTDIR + "/lehrer/Klassenteam_" + sclass.getClassName() + ".csv");
 					
 			try {
 				Scanner kscanner = new Scanner(new FileInputStream(kteam), "windows-1252");
@@ -43,7 +58,7 @@ public final class Bootstrap {
 				e.printStackTrace();
 			}
 				
-			sclass.setClassPhoto(new File("Klassen/klassen/" + sclass.getClassName() + ".JPG"));
+			sclass.setClassPhoto(new File(FixedConfig.ROOTDIR + "/klassen/" + sclass.getClassName() + ".JPG"));
 			
 			classes.put(cur, sclass);
 		}
