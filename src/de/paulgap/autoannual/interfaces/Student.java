@@ -1,4 +1,6 @@
-package de.paulgap.classphoto;
+package de.paulgap.autoannual.interfaces;
+
+import de.paulgap.autoannual.objects.SchoolClass;
 
 public class Student {
 	

@@ -5,12 +5,11 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-import de.paulgap.classphoto.SchoolClass;
-import de.paulgap.classphoto.ScribusClassPhotoPage;
-import de.paulgap.classphoto.Util;
-import de.paulgap.classphoto.input.ClassTeamValidator;
-import de.paulgap.classphoto.input.OrderComparator;
-import de.paulgap.classphoto.input.StudentLoader;
+import de.paulgap.autoannual.input.ClassTeamValidator;
+import de.paulgap.autoannual.input.OrderComparator;
+import de.paulgap.autoannual.input.StudentLoader;
+import de.paulgap.autoannual.objects.SchoolClass;
+import de.paulgap.autoannual.objects.ScribusClassPhotoPage;
 import de.paulgap.scribusapi.ScribusXML;
 
 public final class Bootstrap {

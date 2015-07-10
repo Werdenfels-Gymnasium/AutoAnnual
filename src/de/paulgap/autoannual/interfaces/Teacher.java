@@ -1,4 +1,4 @@
-package de.paulgap.classphoto;
+package de.paulgap.autoannual.interfaces;
 
 import java.util.ArrayList;
 import java.util.List;

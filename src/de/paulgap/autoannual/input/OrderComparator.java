@@ -1,4 +1,4 @@
-package de.paulgap.classphoto.input;
+package de.paulgap.autoannual.input;
 
 import java.io.File;
 import java.util.ArrayList;

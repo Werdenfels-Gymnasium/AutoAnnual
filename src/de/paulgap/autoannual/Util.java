@@ -1,4 +1,4 @@
-package de.paulgap.classphoto;
+package de.paulgap.autoannual;
 
 import java.text.DecimalFormat;
 

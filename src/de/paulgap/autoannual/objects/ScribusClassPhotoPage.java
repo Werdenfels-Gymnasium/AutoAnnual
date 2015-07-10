@@ -1,10 +1,14 @@
-package de.paulgap.classphoto;
+package de.paulgap.autoannual.objects;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.w3c.dom.Element;
 
+import de.paulgap.autoannual.Util;
+import de.paulgap.autoannual.interfaces.Student;
+import de.paulgap.autoannual.interfaces.Subject;
+import de.paulgap.autoannual.interfaces.Teacher;
 import de.paulgap.scribusapi.ScribusAttributeObject;
 import de.paulgap.scribusapi.ScribusObject;
 import de.paulgap.scribusapi.ScribusUtil;

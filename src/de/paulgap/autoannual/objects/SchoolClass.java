@@ -1,8 +1,12 @@
-package de.paulgap.classphoto;
+package de.paulgap.autoannual.objects;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.paulgap.autoannual.interfaces.Student;
+import de.paulgap.autoannual.interfaces.Subject;
+import de.paulgap.autoannual.interfaces.Teacher;
 
 public class SchoolClass {
 

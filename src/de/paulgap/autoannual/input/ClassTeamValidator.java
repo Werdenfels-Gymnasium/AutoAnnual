@@ -1,9 +1,9 @@
-package de.paulgap.classphoto.input;
+package de.paulgap.autoannual.input;
 
-import de.paulgap.classphoto.SchoolClass;
-import de.paulgap.classphoto.Subject;
-import de.paulgap.classphoto.Teacher;
-import de.paulgap.classphoto.Subject.SubjectType;
+import de.paulgap.autoannual.interfaces.Subject;
+import de.paulgap.autoannual.interfaces.Teacher;
+import de.paulgap.autoannual.interfaces.Subject.SubjectType;
+import de.paulgap.autoannual.objects.SchoolClass;
 
 public final class ClassTeamValidator {
 

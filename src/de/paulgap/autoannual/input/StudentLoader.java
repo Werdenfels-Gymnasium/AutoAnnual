@@ -1,4 +1,4 @@
-package de.paulgap.classphoto.input;
+package de.paulgap.autoannual.input;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 import de.paulgap.autoannual.Bootstrap;
 import de.paulgap.autoannual.FixedConfig;
-import de.paulgap.classphoto.SchoolClass;
-import de.paulgap.classphoto.Student;
-import de.paulgap.classphoto.Util;
+import de.paulgap.autoannual.Util;
+import de.paulgap.autoannual.interfaces.Student;
+import de.paulgap.autoannual.objects.SchoolClass;
 
 public class StudentLoader {
 
